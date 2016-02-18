@@ -20,6 +20,8 @@ class TestAction extends Action{
     public function run()
     {
         echo 'adasdasdasd';
+
+        $this->render();
     }
 
     protected function beforeRun()
