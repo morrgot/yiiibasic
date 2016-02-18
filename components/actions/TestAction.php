@@ -21,7 +21,7 @@ class TestAction extends Action{
     {
         echo 'adasdasdasd';
 
-        $this->render();
+        //return \Yii::$app->view->render('@app/views/site/test', array('param' => 'echhoo!!'));
     }
 
     protected function beforeRun()
