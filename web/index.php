@@ -9,4 +9,10 @@ require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
 
 $config = require(__DIR__ . '/../config/web.php');
 
+function p($a){
+    echo '<pre>';
+    print_r($a);
+    echo '</pre>';
+}
+
 (new yii\web\Application($config))->run();
