@@ -13,6 +13,7 @@ use yii\base\Action;
 use yii\base\Widget;
 use yii\filters\ContentNegotiator;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 use yii\web\Response;
 
 class TestAction extends Action{
@@ -45,7 +46,9 @@ class TestAction extends Action{
     {
         //new Widget()
         //echo '<h1>adasd1123</h1>';
-        $this->dosmth(array(1));
+        //$this->dosmth(array(1));
+        var_dump(Url::base(),\Yii::$app->getRequest()->get());
+
         //phpinfo();
         //return array('name' => 'vasya');
 
