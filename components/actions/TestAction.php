@@ -47,7 +47,7 @@ class TestAction extends Action{
         //new Widget()
         //echo '<h1>adasd1123</h1>';
         //$this->dosmth(array(1));
-        var_dump(    Url::base(),\Yii::$app->getRequest()->get());
+        var_dump(Url::base(),\Yii::$app->getRequest()->get());
 
         //phpinfo();
         //return array('name' => 'vasya');
