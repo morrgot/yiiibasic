@@ -18,6 +18,8 @@ use yii\web\Response;
 
 class TestAction extends Action{
 
+    const TEST_EVENT = 'testEvent';
+
     protected $start_time;
 
     protected $end_time;
@@ -48,6 +50,7 @@ class TestAction extends Action{
         //echo '<h1>adasd1123</h1>';
         //$this->dosmth(array(1));
         var_dump(Url::base(),\Yii::$app->getRequest()->get());
+        $this->trigger(self::TEST_EVENT);
 
         //phpinfo();
         //return array('name' => 'vasya');
