@@ -9,13 +9,27 @@
 namespace app\components\behaviors;
 
 
+use app\components\actions\TestAction;
+use app\components\events\TestEvent;
 use yii\base\Behavior;
+use yii\base\Event;
 
 class TestBehavior extends Behavior{
 
-    public function func()
+    protected static $eventHandlers = [
+        TestAction::TEST_EVENT => 'onTestEvent',
+    ];
+
+    public function events()
     {
-        var_dump($this->owner);
+        return static::$eventHandlers;
+    }
+
+
+    public function onTestEvent(TestEvent $event = null)
+    {
+        echo '<h1>onTestEvent launched!!</h1>';
+        var_dump($event->getAdditional());
     }
 
 }

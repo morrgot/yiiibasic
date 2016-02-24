@@ -13,4 +13,26 @@ use yii\base\Event;
 
 class TestEvent extends Event{
 
+    /**
+     * @var mixed
+     */
+    protected $additional;
+
+    /**
+     * @return mixed
+     */
+    public function getAdditional()
+    {
+        return $this->additional;
+    }
+
+    /**
+     * @param mixed $additional
+     */
+    public function setAdditional($additional)
+    {
+        $this->additional = $additional;
+    }
+    
+
 }
