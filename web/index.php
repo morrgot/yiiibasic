@@ -15,4 +15,8 @@ function p($a){
     echo '</pre>';
 }
 
+function v(){
+    return call_user_func_array('var_dump', func_get_args());
+}
+
 (new yii\web\Application($config))->run();
