@@ -32,4 +32,8 @@ class TestBehavior extends Behavior{
         var_dump($event->getAdditional());
     }
 
+    public function missedMethod()
+    {
+        echo '<h2>Called missed method!</h2>';
+    }
 }

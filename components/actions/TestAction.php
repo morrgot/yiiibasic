@@ -18,6 +18,12 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\web\Response;
 
+/**
+ * Class TestAction
+ * @package app\components\actions
+ *
+ * @method void missedMethod() - TestBehavior method
+ */
 class TestAction extends Action{
 
     const TEST_EVENT = 'testEvent';
@@ -56,6 +62,8 @@ class TestAction extends Action{
         $e = new TestEvent();
         $e->setAdditional(array('my custom info!'));
         $this->trigger(self::TEST_EVENT, $e);
+
+        //$this->missedMethod();
     }
 
     protected function dosmth(array $arr){
