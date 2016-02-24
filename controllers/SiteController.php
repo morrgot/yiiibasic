@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\filters\ActionTimeFilter;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\ContentNegotiator;
@@ -33,6 +34,10 @@ class SiteController extends BaseController
                     'logout' => ['post'],
                 ],
             ],
+            'action-time' =>[
+                'class' => ActionTimeFilter::className(),
+                'only' => ['test']
+            ]
         ];
 
     }
