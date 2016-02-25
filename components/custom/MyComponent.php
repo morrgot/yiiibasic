@@ -12,5 +12,7 @@ namespace app\components\custom;
 use yii\base\Component;
 
 class MyComponent extends Component{
+
     protected $id = 123456;
+
 }
