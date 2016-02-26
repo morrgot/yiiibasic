@@ -13,8 +13,11 @@ use app\components\behaviors\TestBehavior;
 use app\components\custom\MyObject;
 use app\components\events\TestEvent;
 use app\components\filters\ActionTimeFilter;
+use app\migrations\BaseMigration;
 use yii\base\Action;
 use yii\base\Widget;
+use yii\db\Connection;
+use yii\db\Schema;
 use yii\filters\ContentNegotiator;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
@@ -81,7 +84,13 @@ class TestAction extends Action{
         $e->setAdditional(array('my custom info!'));
         $this->trigger(self::TEST_EVENT, $e);
 
-        v(\Yii::$app->db->createCommand('SELECT * FROM users '));
+        v(basename('C:\OpenServer\domains\basic.dev\web\robots.txt'));
+        $db = \Yii::$app->db;
+        $schecma = $db->getSchema();
+
+        //v(in_array( $db->getSchema()->getRawTableName('{{%tttt}}'),$db->getSchema()->getTableNames()));
+
+        /*v(\Yii::$app->db->createCommand('SELECT * FROM users '));
 
         v($this->my_object);
 
@@ -89,7 +98,7 @@ class TestAction extends Action{
 
         v(\Yii::$container->get(get_class($this->my_object)));
 
-        v(\Yii::$container->get(get_class($this->my_object->getComponent())));
+        v(\Yii::$container->get(get_class($this->my_object->getComponent())));*/
 
         //$this->missedMethod();
     }

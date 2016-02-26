@@ -8,7 +8,7 @@ class m160225_171102_create_users_table extends \app\migrations\BaseMigration
 
     public function safeUp()
     {
-        $this->createTable(self::USERS_TABLE_NAME, [
+        $this->createTableIfNotExists(self::USERS_TABLE_NAME, [
             'id' => $this->primaryKey(),
             'email' => $this->string(40)->notNull()->unique(),
             'password' => $this->string(50)->notNull(),
