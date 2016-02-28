@@ -87,6 +87,20 @@ class TestAction extends Action{
         v(basename('C:\OpenServer\domains\basic.dev\web\robots.txt'));
         $db = \Yii::$app->db;
         $schecma = $db->getSchema();
+        $cache = \Yii::$app->getCache();
+
+        /**
+         * @var \yii\mongodb\Connection $mongodb
+         * @var \yii\mongodb\Cache $mongo_cache
+         */
+        $mongodb = \Yii::$app->get('mongodb');
+        $mongo_cache = \Yii::$app->get('mongo_cache');
+
+        //v(\Yii::$app->cache);
+        $result = $mongodb->getCollection('users')->findOne(['name' => 'Vasya'], ['name']);
+        $result = $mongo_cache->set('username', 'Kolya');
+
+        v($result);
 
         //v(in_array( $db->getSchema()->getRawTableName('{{%tttt}}'),$db->getSchema()->getTableNames()));
 

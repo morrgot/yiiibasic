@@ -47,6 +47,14 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'mongodb' => [
+            'class' => \yii\mongodb\Connection::className(),
+            'dsn' => 'mongodb://localhost:27017/yiiapp'
+        ],
+        'mongo_cache' => [
+            'class' => \yii\mongodb\Cache::className(),
+            'keyPrefix' => 'basic_dev'
+        ]
     ],
     'params' => $params,
 ];
