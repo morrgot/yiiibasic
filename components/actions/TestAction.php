@@ -23,6 +23,23 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\web\Response;
 
+class A{
+
+    private $var;
+
+    function setMe($value){
+        $this->var = $value;
+        v($this->var);
+    }
+
+    public function getVar()
+    {
+        return $this->var;
+    }
+}
+class B extends A{
+    public $var;
+}
 /**
  * Class TestAction
  * @package app\components\actions
@@ -89,6 +106,15 @@ class TestAction extends Action{
         $schecma = $db->getSchema();
         $cache = \Yii::$app->getCache();
 
+        $arr = [
+            'zero',
+            '0' => 'first',
+            '2' => 'second'
+        ];
+        echo 'arr';
+        v($arr);
+
+        //echo $oTest->var;
         /**
          * @var \yii\mongodb\Connection $mongodb
          * @var \yii\mongodb\Cache $mongo_cache
@@ -97,10 +123,10 @@ class TestAction extends Action{
         $mongo_cache = \Yii::$app->get('mongo_cache');
 
         //v(\Yii::$app->cache);
-        $result = $mongodb->getCollection('users')->findOne(['name' => 'Vasya'], ['name']);
+        /*$result = $mongodb->getCollection('users')->findOne(['name' => 'Vasya'], ['name']);
         $result = $mongo_cache->set('username', 'Kolya');
 
-        v($result);
+        v($result);*/
 
         //v(in_array( $db->getSchema()->getRawTableName('{{%tttt}}'),$db->getSchema()->getTableNames()));
 
