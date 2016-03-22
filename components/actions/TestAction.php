@@ -16,6 +16,7 @@ use app\components\filters\ActionTimeFilter;
 use app\migrations\BaseMigration;
 use yii\base\Action;
 use yii\base\Widget;
+use yii\caching\MemCache;
 use yii\db\Connection;
 use yii\db\Schema;
 use yii\filters\ContentNegotiator;
@@ -23,23 +24,6 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\web\Response;
 
-class A{
-
-    private $var;
-
-    function setMe($value){
-        $this->var = $value;
-        v($this->var);
-    }
-
-    public function getVar()
-    {
-        return $this->var;
-    }
-}
-class B extends A{
-    public $var;
-}
 /**
  * Class TestAction
  * @package app\components\actions
@@ -103,24 +87,32 @@ class TestAction extends Action{
 
         v(basename('C:\OpenServer\domains\basic.dev\web\robots.txt'));
         $db = \Yii::$app->db;
-        $schecma = $db->getSchema();
-        $cache = \Yii::$app->getCache();
 
-        $arr = [
-            'zero',
-            '0' => 'first',
-            '2' => 'second'
-        ];
-        echo 'arr';
-        v($arr);
+        /**
+         * @var $cache MemCache
+         */
+        $cache = \Yii::$app->getCache();
+        $key = 'first_key';
+        v($cache->buildKey($key));
+
+        //$cache->add('first_key','value1', 300);
+        //$cache->set($key,'yii',3000);
+        //$from = $cache->get($key);
+
+        //p($cache->getMemcache()->getextendedstats());
+
+        $memcache = new \Memcache();
+        $memcache->connect('127.0.0.1',11211);
+        //p($memcache->getExtendedStats('items'));
+
+
 
         //echo $oTest->var;
         /**
          * @var \yii\mongodb\Connection $mongodb
          * @var \yii\mongodb\Cache $mongo_cache
          */
-        $mongodb = \Yii::$app->get('mongodb');
-        $mongo_cache = \Yii::$app->get('mongo_cache');
+
 
         //v(\Yii::$app->cache);
         /*$result = $mongodb->getCollection('users')->findOne(['name' => 'Vasya'], ['name']);
@@ -129,20 +121,7 @@ class TestAction extends Action{
         v($result);*/
 
 
-        $b = new B();
-        $b->method('hello', 'world');
-
         //v(in_array( $db->getSchema()->getRawTableName('{{%tttt}}'),$db->getSchema()->getTableNames()));
-
-        v(\Yii::$app->db->createCommand('SELECT * FROM users '));
-
-        v($this->my_object);
-
-        v($this->my_object->getComponent());
-
-        v(\Yii::$container->get(get_class($this->my_object)));
-
-        v(\Yii::$container->get(get_class($this->my_object->getComponent())));
 
         //$this->missedMethod();
     }

@@ -21,7 +21,14 @@ $config = [
 			],
 		],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => \yii\caching\MemCache::className(),
+            'servers' => [
+                [
+                    'host' => '127.0.0.1',
+                    'port' => 11211
+                ]
+            ]
+
         ],
         'user' => [
             'identityClass' => 'app\models\User',
