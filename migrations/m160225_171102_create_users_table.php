@@ -2,8 +2,9 @@
 
 use yii\db\Migration;
 use yii\db\Schema;
+use app\migrations\BaseMigration;
 
-class m160225_171102_create_users_table extends \app\migrations\BaseMigration
+class m160225_171102_create_users_table extends BaseMigration
 {
 
     public function safeUp()

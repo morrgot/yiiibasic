@@ -88,9 +88,13 @@ class TestAction extends Action{
         $db = \Yii::$app->db;
         $schecma = $db->getSchema();
 
+
+        $b = new B();
+        $b->method('hello', 'world');
+
         //v(in_array( $db->getSchema()->getRawTableName('{{%tttt}}'),$db->getSchema()->getTableNames()));
 
-        /*v(\Yii::$app->db->createCommand('SELECT * FROM users '));
+        v(\Yii::$app->db->createCommand('SELECT * FROM users '));
 
         v($this->my_object);
 
@@ -98,7 +102,7 @@ class TestAction extends Action{
 
         v(\Yii::$container->get(get_class($this->my_object)));
 
-        v(\Yii::$container->get(get_class($this->my_object->getComponent())));*/
+        v(\Yii::$container->get(get_class($this->my_object->getComponent())));
 
         //$this->missedMethod();
     }
