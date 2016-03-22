@@ -23,6 +23,23 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\web\Response;
 
+class A{
+
+    private $var;
+
+    function setMe($value){
+        $this->var = $value;
+        v($this->var);
+    }
+
+    public function getVar()
+    {
+        return $this->var;
+    }
+}
+class B extends A{
+    public $var;
+}
 /**
  * Class TestAction
  * @package app\components\actions
@@ -87,6 +104,29 @@ class TestAction extends Action{
         v(basename('C:\OpenServer\domains\basic.dev\web\robots.txt'));
         $db = \Yii::$app->db;
         $schecma = $db->getSchema();
+        $cache = \Yii::$app->getCache();
+
+        $arr = [
+            'zero',
+            '0' => 'first',
+            '2' => 'second'
+        ];
+        echo 'arr';
+        v($arr);
+
+        //echo $oTest->var;
+        /**
+         * @var \yii\mongodb\Connection $mongodb
+         * @var \yii\mongodb\Cache $mongo_cache
+         */
+        $mongodb = \Yii::$app->get('mongodb');
+        $mongo_cache = \Yii::$app->get('mongo_cache');
+
+        //v(\Yii::$app->cache);
+        /*$result = $mongodb->getCollection('users')->findOne(['name' => 'Vasya'], ['name']);
+        $result = $mongo_cache->set('username', 'Kolya');
+
+        v($result);*/
 
 
         $b = new B();
