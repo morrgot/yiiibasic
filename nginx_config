@@ -5,6 +5,8 @@ server {
 
     root /var/www/basic.dev/web/;
     index index.php;
+    error_page 404 /404.html;
+    error_page 403 /403.html;
 
     gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
@@ -13,7 +15,7 @@ server {
     }
 
     location /index.php {
-        #rewrite ^(.*)/index\.php$ / permanent;
+
         include fastcgi_params;
 
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
@@ -21,11 +23,15 @@ server {
         fastcgi_pass unix:/var/run/php5-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        fastcgi_param QUERY_STRING    $query_string;
     }
 
     location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {
         try_files $uri =404;
+    }
+
+    location ~ /\. {
+        deny all;
+        log_not_found off;
     }
 
 }
