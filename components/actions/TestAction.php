@@ -85,13 +85,15 @@ class TestAction extends Action{
         $e->setAdditional(array('my custom info!'));
         $this->trigger(self::TEST_EVENT, $e);
 
-        v(basename('C:\OpenServer\domains\basic.dev\web\robots.txt'));
+        $client = new \GearmanClient();
+        v(get_class($client));
+
         $db = \Yii::$app->db;
 
         /**
          * @var $cache MemCache
          */
-        $cache = \Yii::$app->getCache();
+        //$cache = \Yii::$app->getCache();
 
         //$cache->add('first_key','value1', 300);
         //$cache->set($key,'yii',3000);
