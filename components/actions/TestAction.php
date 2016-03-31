@@ -92,20 +92,15 @@ class TestAction extends Action{
          * @var $cache MemCache
          */
         $cache = \Yii::$app->getCache();
-        $key = 'first_key';
-        v($cache->buildKey($key));
 
         //$cache->add('first_key','value1', 300);
         //$cache->set($key,'yii',3000);
         //$from = $cache->get($key);
 
         //p($cache->getMemcache()->getextendedstats());
-
-        $memcache = new \Memcache();
-        $memcache->connect('127.0.0.1',11211);
         //p($memcache->getExtendedStats('items'));
 
-
+    echo 'ALEEEX!';
 
         //echo $oTest->var;
         /**
